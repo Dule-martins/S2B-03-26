@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine Shine Baby Naturals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf7;
+    --yellow: #f5c842;
+    --brown: #7a4f2d;
+    --brown-light: #c8956a;
+    --cream: #fdf6ec;
+    --gray: #e8e5df;
+    --text-muted: #888;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4vw;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem; font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--brown); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--black);
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brown); }
+  .cart-btn {
+    background: var(--black); color: var(--white);
+    border: none; padding: 0.6rem 1.2rem;
+    border-radius: 2rem; cursor: pointer;
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: background 0.2s;
+  }
+  .cart-btn:hover { background: var(--brown); }
+  .cart-count {
+    background: var(--yellow); color: var(--black);
+    border-radius: 50%; width: 1.3rem; height: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700;
+  }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: var(--black);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 4vw 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-circle {
+    position: absolute;
+    width: 60vw; height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,200,66,0.15) 0%, transparent 70%);
+    right: -10vw; top: 50%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .hero-content { color: var(--white); z-index: 1; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(245,200,66,0.15);
+    border: 1px solid rgba(245,200,66,0.3);
+    color: var(--yellow);
+    padding: 0.4rem 1rem; border-radius: 2rem;
+    font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 em { color: var(--yellow); font-style: italic; }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px; margin-bottom: 0.8rem;
+  }
+  .hero-tagline {
+    font-size: 0.85rem; color: rgba(255,255,255,0.4);
+    margin-bottom: 2.5rem; font-style: italic;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    border: none; padding: 1rem 2.2rem;
+    border-radius: 3rem; cursor: pointer;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,200,66,0.4); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 1rem 2.2rem; border-radius: 3rem; cursor: pointer;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 500;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  .hero-image-side {
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1; position: relative;
+  }
+  .hero-product-card {
+    background: var(--white);
+    border-radius: 2rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .hero-product-emoji {
+    font-size: 7rem; line-height: 1;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .hero-product-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .hero-product-size {
+    color: var(--text-muted); font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .hero-price {
+    font-size: 1.8rem; font-weight: 700;
+    font-family: var(--font-display);
+    color: var(--brown);
+  }
+  .nafdac-badge {
+    position: absolute; top: -12px; right: -12px;
+    background: var(--yellow); color: var(--black);
+    font-size: 0.65rem; font-weight: 700;
+    padding: 0.4rem 0.7rem; border-radius: 1rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    background: var(--yellow);
+    padding: 1rem 4vw;
+    display: flex; justify-content: center;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; font-weight: 600; color: var(--black);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4vw; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--brown);
+    margin-bottom: 0.8rem;
+  }
+  .section-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── BENEFITS ── */
+  #benefits { background: var(--cream); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .benefit-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--gray);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .benefit-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .benefit-title { font-weight: 600; margin-bottom: 0.4rem; font-size: 1rem; }
+  .benefit-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── STORY ── */
+  #story {
+    background: var(--black); color: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  #story .section-h2 { color: var(--white); }
+  .story-text { font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.7); }
+  .story-quote {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900; font-style: italic;
+    color: var(--yellow);
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  /* ── PRODUCT / SHOP ── */
+  #shop { background: var(--white); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .product-card {
+    background: var(--cream);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--gray);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+  .product-img-wrap {
+    background: var(--yellow);
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+  .product-img-wrap .prod-emoji-fallback {
+    font-size: 6rem; line-height: 1;
+  }
+  .product-info { padding: 1.5rem; }
+  .product-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
+  .product-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+  .product-meta { display: flex; justify-content: space-between; align-items: center; }
+  .product-price { font-size: 1.4rem; font-weight: 700; font-family: var(--font-display); color: var(--brown); }
+  .product-stock { font-size: 0.78rem; color: #4caf50; font-weight: 500; }
+  .product-stock.low { color: #ff7043; }
+  .add-to-cart {
+    width: 100%; margin-top: 1rem;
+    background: var(--black); color: var(--white);
+    border: none; padding: 0.9rem;
+    border-radius: 1rem; cursor: pointer;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .add-to-cart:hover { background: var(--brown); }
+  .add-to-cart:disabled { background: var(--gray); color: var(--text-muted); cursor: not-allowed; }
+
+  /* ── HOW TO USE ── */
+  #how { background: var(--cream); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .step { text-align: center; }
+  .step-num {
+    width: 3rem; height: 3rem; border-radius: 50%;
+    background: var(--black); color: var(--yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+  .step-title { font-weight: 600; margin-bottom: 0.4rem; }
+  .step-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .testi-card {
+    background: var(--cream); border-radius: 1.5rem;
+    padding: 2rem; border-left: 4px solid var(--yellow);
+  }
+  .testi-text { font-size: 1rem; line-height: 1.7; font-style: italic; margin-bottom: 1rem; }
+  .testi-author { font-size: 0.82rem; font-weight: 600; color: var(--brown); }
+
+  /* ── BRAND PURPOSE ── */
+  #purpose {
+    background: var(--brown);
+    color: var(--white); text-align: center;
+  }
+  #purpose .section-h2 { color: var(--white); margin: 0 auto 1.5rem; max-width: 700px; }
+  .purpose-text { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2.5rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black); color: rgba(255,255,255,0.5);
+    padding: 2rem 4vw; text-align: center; font-size: 0.85rem;
+  }
+  footer strong { color: var(--white); }
+
+  /* ── CART DRAWER ── */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 2000; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0;
+    width: min(420px, 95vw);
+    background: var(--white);
+    z-index: 2001; padding: 2rem;
+    transform: translateX(100%); transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+  .cart-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
+  .close-btn {
+    background: var(--gray); border: none;
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-items { flex: 1; overflow-y: auto; }
+  .cart-item {
+    display: flex; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid var(--gray);
+    align-items: center;
+  }
+  .cart-item-emoji { font-size: 2.5rem; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-weight: 600; font-size: 0.95rem; }
+  .cart-item-price { color: var(--brown); font-weight: 500; font-size: 0.9rem; }
+  .cart-item-qty {
+    display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem;
+  }
+  .qty-btn {
+    width: 1.8rem; height: 1.8rem; border-radius: 50%;
+    border: 1px solid var(--gray); background: var(--white);
+    cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qty-val { font-weight: 600; min-width: 1.5rem; text-align: center; }
+  .cart-footer { border-top: 2px solid var(--black); padding-top: 1.2rem; margin-top: 1rem; }
+  .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
+  .checkout-btn {
+    width: 100%; background: var(--black); color: var(--white);
+    border: none; padding: 1rem; border-radius: 1rem;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .checkout-btn:hover { background: var(--brown); }
+  .empty-cart { text-align: center; color: var(--text-muted); padding: 3rem 0; }
+  .empty-cart span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+
+  /* ── MODAL (CHECKOUT & ADMIN) ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 3000; display: flex; align-items: center; justify-content: center;
+    padding: 1rem; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--white); border-radius: 2rem;
+    padding: 2.5rem; max-width: 560px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    transform: translateY(20px); transition: transform 0.3s;
+    position: relative;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .modal-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 2rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1.5px solid var(--gray); border-radius: 0.8rem;
+    font-family: var(--font-body); font-size: 0.95rem;
+    background: var(--cream); outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--brown); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .modal-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+  .modal-actions .btn-primary { flex: 1; text-align: center; }
+  .order-summary {
+    background: var(--cream); border-radius: 1rem;
+    padding: 1.2rem; margin-bottom: 1.5rem;
+  }
+  .order-summary-title { font-weight: 700; margin-bottom: 0.8rem; font-size: 0.95rem; }
+  .order-line { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.4rem; }
+  .order-total { border-top: 1px solid var(--gray); padding-top: 0.6rem; margin-top: 0.6rem; font-weight: 700; }
+
+  /* ── ADMIN DASHBOARD ── */
+  #adminModal .modal { max-width: 900px; }
+  .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .admin-tab {
+    padding: 0.5rem 1.2rem; border-radius: 2rem; border: 1.5px solid var(--gray);
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; background: transparent;
+    transition: all 0.2s;
+  }
+  .admin-tab.active { background: var(--black); color: var(--white); border-color: var(--black); }
+  .admin-panel { display: none; }
+  .admin-panel.active { display: block; }
+  .orders-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .orders-table th { background: var(--cream); padding: 0.8rem; text-align: left; font-weight: 600; }
+  .orders-table td { padding: 0.8rem; border-bottom: 1px solid var(--gray); vertical-align: top; }
+  .orders-table tr:hover td { background: var(--cream); }
+  .order-id { font-family: monospace; font-size: 0.75rem; color: var(--brown); }
+  .status-badge {
+    display: inline-block; padding: 0.2rem 0.6rem;
+    border-radius: 1rem; font-size: 0.72rem; font-weight: 600;
+    background: #e8f5e9; color: #2e7d32;
+  }
+  .product-list-admin { display: flex; flex-direction: column; gap: 1rem; }
+  .product-admin-row {
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 1rem; align-items: center;
+    padding: 1rem; background: var(--cream); border-radius: 1rem;
+  }
+  .product-admin-emoji { font-size: 2.5rem; }
+  .product-admin-fields { display: flex; flex-direction: column; gap: 0.4rem; }
+  .product-admin-name { font-weight: 700; font-size: 0.95rem; }
+  .mini-inputs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .mini-input {
+    padding: 0.35rem 0.6rem; border: 1.5px solid var(--gray);
+    border-radius: 0.5rem; font-size: 0.8rem; width: 100px;
+    font-family: var(--font-body);
+  }
+  .edit-product-btn {
+    background: var(--black); color: var(--white);
+    border: none; padding: 0.5rem 1rem;
+    border-radius: 0.6rem; font-size: 0.8rem;
+    cursor: pointer; font-weight: 500;
+  }
+  .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card {
+    background: var(--cream); border-radius: 1rem;
+    padding: 1.2rem; text-align: center;
+  }
+  .stat-val { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--brown); }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+  /* ── SUCCESS STATE ── */
+  .success-state { text-align: center; padding: 2rem 0; }
+  .success-icon { font-size: 4rem; display: block; margin-bottom: 1rem; }
+  .success-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .success-text { color: var(--text-muted); line-height: 1.7; }
+  .order-ref { font-family: monospace; background: var(--cream); padding: 0.3rem 0.7rem; border-radius: 0.5rem; color: var(--brown); font-weight: 700; font-size: 0.9rem; }
+
+  /* ── ADMIN LOGIN ── */
+  .admin-link {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--black); color: rgba(255,255,255,0.4);
+    border: none; padding: 0.5rem 0.9rem;
+    border-radius: 1rem; font-size: 0.72rem;
+    cursor: pointer; z-index: 500;
+    font-family: var(--font-body);
+    transition: color 0.2s;
+  }
+  .admin-link:hover { color: var(--white); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: var(--black); color: var(--white);
+    padding: 0.8rem 2rem; border-radius: 3rem;
+    font-size: 0.9rem; font-weight: 500;
+    z-index: 9999; transition: transform 0.3s;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── SOCIAL SHARE ── */
+  .share-bar {
+    display: flex; gap: 0.7rem; flex-wrap: wrap;
+    align-items: center; justify-content: center;
+    padding: 1.5rem 4vw;
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .share-label {
+    color: rgba(255,255,255,0.5); font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-right: 0.3rem;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.55rem 1.1rem; border-radius: 2rem;
+    font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    border: none; text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    font-family: var(--font-body);
+  }
+  .share-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .share-wa  { background: #25D366; color: #fff; }
+  .share-fb  { background: #1877F2; color: #fff; }
+  .share-tw  { background: #000; color: #fff; border: 1px solid #333; }
+  .share-ig  { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+  .share-copy { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+  .share-native { background: var(--yellow); color: var(--black); }
+
+  /* Share on product cards */
+  .product-share {
+    display: flex; gap: 0.4rem; margin-top: 0.7rem; flex-wrap: wrap;
+  }
+  .product-share-btn {
+    flex: 1; min-width: 0;
+    display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+    padding: 0.45rem 0.6rem; border-radius: 0.6rem;
+    font-size: 0.72rem; font-weight: 600; cursor: pointer; border: none;
+    font-family: var(--font-body); transition: opacity 0.2s;
+    text-decoration: none;
+  }
+  .product-share-btn:hover { opacity: 0.82; }
+
+  /* ── IMAGE UPLOAD ── */
+  .img-upload-zone {
+    border: 2px dashed var(--brown-light);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--white);
+    position: relative;
+  }
+  .img-upload-zone:hover { border-color: var(--brown); background: #fdf3e7; }
+  .img-upload-zone input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .img-upload-preview {
+    width: 100%; height: 140px; object-fit: cover;
+    border-radius: 0.6rem; margin-bottom: 0.6rem; display: block;
+  }
+  .img-upload-placeholder { color: var(--text-muted); font-size: 0.82rem; }
+  .img-upload-placeholder span { font-size: 1.8rem; display: block; margin-bottom: 0.3rem; }
+  .img-remove-btn {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: #fff0f0; color: #c0392b; border: 1px solid #f5c6c6;
+    padding: 0.3rem 0.7rem; border-radius: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; cursor: pointer;
+    font-family: var(--font-body); margin-top: 0.4rem;
+    position: relative; z-index: 1;
+  }
+  .img-remove-btn:hover { background: #c0392b; color: #fff; }
+  /* Admin product row image thumb */
+  .admin-prod-thumb {
+    width: 56px; height: 56px; border-radius: 0.6rem;
+    object-fit: cover; border: 2px solid var(--gray);
+    flex-shrink: 0;
+  }
+  .admin-prod-thumb-fallback {
+    width: 56px; height: 56px; border-radius: 0.6rem;
+    background: var(--yellow); display: flex; align-items: center;
+    justify-content: center; font-size: 1.8rem;
+    border: 2px solid var(--gray); flex-shrink: 0;
+  }
+  /* Cart item image */
+  .cart-item-img {
+    width: 52px; height: 52px; border-radius: 0.6rem;
+    object-fit: cover; flex-shrink: 0;
+  }
+  .cart-item-img-fallback {
+    width: 52px; height: 52px; border-radius: 0.6rem;
+    background: var(--yellow); display: flex; align-items: center;
+    justify-content: center; font-size: 1.6rem; flex-shrink: 0;
+  }
+  .add-product-form {
+    background: var(--cream); border-radius: 1.2rem;
+    padding: 1.5rem; margin-bottom: 1.5rem;
+    border: 2px dashed var(--brown-light);
+  }
+  .add-product-form h3 {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 1.1rem; margin-bottom: 1rem; color: var(--brown);
+  }
+  .add-form-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+  }
+  .add-form-grid .full { grid-column: 1 / -1; }
+  .add-form-grid input, .add-form-grid select, .add-form-grid textarea {
+    width: 100%; padding: 0.65rem 0.8rem;
+    border: 1.5px solid var(--gray); border-radius: 0.7rem;
+    font-family: var(--font-body); font-size: 0.85rem;
+    background: var(--white); outline: none;
+    transition: border-color 0.2s;
+  }
+  .add-form-grid input:focus { border-color: var(--brown); }
+  .add-product-submit {
+    background: var(--brown); color: var(--white);
+    border: none; padding: 0.7rem 1.5rem;
+    border-radius: 0.8rem; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; margin-top: 0.8rem;
+    font-family: var(--font-body); transition: background 0.2s;
+  }
+  .add-product-submit:hover { background: var(--black); }
+
+  /* Delete button */
+  .delete-product-btn {
+    background: #fff0f0; color: #c0392b; border: 1.5px solid #f5c6c6;
+    padding: 0.5rem 0.9rem; border-radius: 0.6rem;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer;
+    font-family: var(--font-body); transition: all 0.2s;
+  }
+  .delete-product-btn:hover { background: #c0392b; color: #fff; border-color: #c0392b; }
+  .admin-btn-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  /* Delete confirm modal */
+  #deleteConfirmModal .modal { max-width: 380px; text-align: center; }
+  .delete-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+  .delete-confirm-name { font-weight: 700; color: var(--brown); }
+
+  @media (max-width: 768px) {
+    #home { grid-template-columns: 1fr; }
+    .hero-image-side { display: none; }
+    #story { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .mini-inputs { flex-direction: column; }
+    .mini-input { width: 100%; }
+    .add-form-grid { grid-template-columns: 1fr; }
+    .add-form-grid .full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shine Shine <span>Baby</span></div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#story">Our Story</a>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✨ NAFDAC Approved · Nigerian Made</div>
+    <h1 class="hero-h1">Care as pure as <em>mama's love</em></h1>
+    <p class="hero-sub">100% natural, cold-pressed palm kernel oil — gentle enough for newborns, powerful enough for the whole family.</p>
+    <p class="hero-tagline">No additives. No chemicals. Just what your skin truly needs.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn-primary">Shop Now</a>
+      <a href="#story" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-image-side">
+    <div class="hero-product-card">
+      <span class="nafdac-badge">✓ NAFDAC</span>
+      <span class="hero-product-emoji">🌿</span>
+      <div class="hero-product-name">Palm Kernel Oil</div>
+      <div class="hero-product-size">500ml Cold-Pressed</div>
+      <div class="hero-price" id="heroPrice">₦2,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">✔ Suitable for Newborns</div>
+  <div class="trust-item">✔ 100% Natural</div>
+  <div class="trust-item">✔ No Additives or Preservatives</div>
+  <div class="trust-item">✔ NAFDAC Approved</div>
+  <div class="trust-item">✔ Vegan & Cruelty-Free</div>
+</div>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-h2">Simple care.<br>Powerful results.</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <span class="benefit-icon">💧</span>
+      <div class="benefit-title">Deep Moisture</div>
+      <p class="benefit-desc">Penetrates deeply to moisturise dry skin from within, leaving a lasting glow.</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-icon">🍼</span>
+      <div class="benefit-title">Newborn Safe</div>
+      <p class="benefit-desc">Gentle enough for the most sensitive baby skin — zero harsh chemicals.</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-icon">🌱</span>
+      <div class="benefit-title">Eczema Soothing</div>
+      <p class="benefit-desc">Calms and soothes eczema-prone and sensitive skin naturally.</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-icon">✨</span>
+      <div class="benefit-title">Multi-Use</div>
+      <p class="benefit-desc">Skin, hair, scalp, and body — one bottle does it all for the whole family.</p>
+    </div>
+    <div class="benefit-card">
+      <span class="benefit-icon">🔬</span>
+      <div class="benefit-title">Pure & Clean</div>
+      <p class="benefit-desc">Safe if accidentally ingested — truly non-toxic and clean.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div>
+    <div class="section-label" style="color:var(--yellow)">Our Story</div>
+    <h2 class="section-h2" style="color:var(--white)">A Tradition You Can Trust</h2>
+    <p class="story-text">When we were young, Mama oiled our skin after dinner every night. Our feet shone as bright as our faces… and our faces as bright as our hair. She would smile and say, <strong style="color:var(--yellow)">"Shine Shine Baby."</strong></p>
+    <br>
+    <p class="story-text">That simple act of care — passed down through generations — is where we come from. Shine Shine Baby Naturals was created to preserve that tradition, and to bring it back in a way today's mothers can trust. No chemicals. No confusion. Just simple, natural care — the way it has always been.</p>
+  </div>
+  <div style="text-align:center">
+    <div class="story-quote">"Shine<br>Shine<br>Baby."</div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="section-label">Our Products</div>
+  <h2 class="section-h2">Shop Natural Goodness</h2>
+  <div class="products-grid" id="productsGrid">
+    <!-- Dynamically rendered -->
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section id="how">
+  <div class="section-label">How To Use</div>
+  <h2 class="section-h2">Simple to use.<br>Easy to love.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Apply Generously</div>
+      <p class="step-text">Apply from head to toe — face, body, scalp, and hair.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Use Daily</div>
+      <p class="step-text">Morning and night for best results. Safe for everyday use.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">For All Ages</div>
+      <p class="step-text">Babies, children, and adults — the whole family benefits.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">💡</div>
+      <div class="step-title">Pro Tip</div>
+      <p class="step-text">If oil solidifies in cool temperatures, gently warm to return to liquid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Testimonials</div>
+  <h2 class="section-h2">Loved by Mothers.<br>Trusted by Families.</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-text">"Cleared my baby's dry skin in days — I'm never going back."</p>
+      <div class="testi-author">— Adaeze N., Lagos</div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">"My mum used this on us, now I use it on my child. The tradition lives on."</p>
+      <div class="testi-author">— Chidinma O., Abuja</div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">"Simple, natural, and it actually works. No fancy ingredients needed."</p>
+      <div class="testi-author">— Bola A., Port Harcourt</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PURPOSE -->
+<section id="purpose">
+  <div class="section-label" style="color:var(--yellow)">More Than Skincare</div>
+  <h2 class="section-h2">Raising a confident generation</h2>
+  <p class="purpose-text">We believe in raising a new generation of confident children who love who they are. By choosing natural, honest products, you're not just caring for your child's skin — you're shaping how they see themselves.</p>
+  <a href="#shop" class="btn-primary">Give your baby the care you trusted growing up</a>
+</section>
+
+<!-- SOCIAL SHARE BAR -->
+<div class="share-bar" id="mainShareBar">
+  <span class="share-label">Share us:</span>
+  <a class="share-btn share-wa" id="shareWa" href="#" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.103 1.51 5.833L0 24l6.335-1.611A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.213-3.76.957.998-3.648-.233-.374A9.78 9.78 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.419 0 9.818 4.398 9.818 9.818 0 5.419-4.399 9.818-9.818 9.818z"/></svg>
+    WhatsApp
+  </a>
+  <a class="share-btn share-fb" id="shareFb" href="#" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    Facebook
+  </a>
+  <a class="share-btn share-tw" id="shareTw" href="#" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    X / Twitter
+  </a>
+  <button class="share-btn share-ig" onclick="shareInstagram()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Instagram
+  </button>
+  <button class="share-btn share-copy" onclick="copyLink()">
+    🔗 Copy Link
+  </button>
+  <button class="share-btn share-native" id="shareNative" style="display:none" onclick="nativeShare()">
+    ↗ Share
+  </button>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="deleteConfirmModal">
+  <div class="modal">
+    <div class="delete-icon">🗑️</div>
+    <div class="modal-title">Delete Product?</div>
+    <p class="modal-sub">You're about to delete <span class="delete-confirm-name" id="deleteProductName"></span>. This cannot be undone.</p>
+    <div class="modal-actions" style="justify-content:center">
+      <button class="btn-outline" onclick="closeModal('deleteConfirmModal')" style="padding:0.9rem 1.5rem;color:var(--black);border-color:var(--gray)">Cancel</button>
+      <button onclick="confirmDelete()" style="background:#c0392b;color:#fff;border:none;padding:0.9rem 1.5rem;border-radius:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-body)">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Shine Shine Baby Naturals</strong> · 100% Natural · NAFDAC Approved · Made with Love 💛</p>
+  <p style="margin-top:0.5rem">© 2025 Shine Shine Baby Naturals. All rights reserved.</p>
+</footer>
+
+<!-- ADMIN LINK -->
+<button class="admin-link" onclick="openAdminLogin()">⚙ Admin</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Your Cart</div>
+    <button class="close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total</span><span id="cartTotalAmt"></span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div id="checkoutForm">
+      <div class="modal-title">Complete Your Order</div>
+      <div class="modal-sub">No account needed — just fill in your details below.</div>
+      <div class="order-summary" id="orderSummaryBox"></div>
+      <div class="form-row">
+        <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="Adaeze"></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="Nwosu"></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" id="emailAddr" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="phoneNum" placeholder="+234 800 000 0000"></div>
+      <div class="form-group"><label>Delivery Address *</label><input type="text" id="deliveryAddr" placeholder="Street, City, State"></div>
+      <div class="form-group"><label>Additional Notes (optional)</label><textarea id="orderNotes" rows="2" placeholder="Any special instructions..."></textarea></div>
+      <div class="modal-actions">
+        <button class="btn-outline" onclick="closeCheckout()" style="flex:0;padding:1rem 1.5rem;color:var(--black);border-color:var(--gray)">Cancel</button>
+        <button class="btn-primary" onclick="submitOrder()" style="border:none;padding:1rem 1.5rem;cursor:pointer">Place Order 🛒</button>
+      </div>
+    </div>
+    <div class="success-state" id="orderSuccess" style="display:none">
+      <span class="success-icon">🎉</span>
+      <div class="success-title">Order Placed!</div>
+      <p class="success-text">Thank you! Your order <span class="order-ref" id="orderRefNum"></span> has been received. We'll contact you shortly to confirm delivery.</p>
+      <button class="btn-primary" onclick="closeCheckout()" style="margin-top:2rem;border:none;padding:1rem 2rem;cursor:pointer">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal-overlay" id="adminLoginModal">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-title">Admin Access</div>
+    <div class="modal-sub">Enter your admin password to continue.</div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminLogin()">
+    </div>
+    <div style="color:red;font-size:0.8rem;margin-top:-0.5rem;margin-bottom:1rem;display:none" id="loginErr">Incorrect password.</div>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="closeModal('adminLoginModal')" style="flex:0;padding:1rem 1.5rem;color:var(--black);border-color:var(--gray)">Cancel</button>
+      <button class="btn-primary" onclick="checkAdminLogin()" style="border:none;padding:1rem 1.5rem;cursor:pointer">Login →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD MODAL -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal" style="max-width:900px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+      <div class="modal-title">Admin Dashboard</div>
+      <button class="close-btn" onclick="closeModal('adminModal')">✕</button>
+    </div>
+    <div class="admin-stats" id="adminStats"></div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('orders')">📋 Orders</button>
+      <button class="admin-tab" onclick="switchTab('products')">📦 Products</button>
+    </div>
+    <div class="admin-panel active" id="tab-orders">
+      <div id="ordersTableWrap"></div>
+    </div>
+    <div class="admin-panel" id="tab-products">
+      <!-- ADD PRODUCT FORM -->
+      <div class="add-product-form">
+        <h3>➕ Add New Product</h3>
+        <div class="add-form-grid">
+          <input type="text" id="newProdName" placeholder="Product name *">
+          <input type="text" id="newProdSize" placeholder="Size / variant (e.g. 500ml)">
+          <input type="number" id="newProdPrice" placeholder="Price in ₦ *" min="0">
+          <input type="number" id="newProdQty" placeholder="Quantity in stock *" min="0">
+          <input type="text" id="newProdEmoji" placeholder="Emoji fallback (e.g. 🌿)" maxlength="4">
+          <div class="full">
+            <input type="text" id="newProdDesc" placeholder="Short description *">
+          </div>
+          <div class="full">
+            <label style="font-size:0.8rem;font-weight:600;display:block;margin-bottom:0.4rem">Product Image</label>
+            <div class="img-upload-zone" id="newImgZone">
+              <input type="file" accept="image/*" id="newProdImgInput" onchange="previewNewImage(event)">
+              <div id="newImgPreviewWrap" style="display:none">
+                <img id="newImgPreview" class="img-upload-preview" src="" alt="Preview">
+                <button type="button" class="img-remove-btn" onclick="removeNewImage(event)">✕ Remove image</button>
+              </div>
+              <div class="img-upload-placeholder" id="newImgPlaceholder">
+                <span>📷</span>
+                Click or drag to upload product image
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="add-product-submit" onclick="addNewProduct()">Add Product</button>
+      </div>
+      <div class="product-list-admin" id="adminProductList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STATE ──
+let cart = [];
+let products = [
+  {
+    id: 'PKO-500',
+    name: 'Cold-Pressed Palm Kernel Oil',
+    size: '500ml',
+    desc: 'Pure, cold-pressed palm kernel oil. Suitable for newborns, babies, and the whole family.',
+    price: 2500,
+    quantity: 48,
+    emoji: '🌿',
+    image: null,
+  },
+  {
+    id: 'PKO-250',
+    name: 'Travel Size Palm Kernel Oil',
+    size: '250ml',
+    desc: 'The same pure formula in a handy travel size. Perfect for on-the-go skincare.',
+    price: 1500,
+    quantity: 30,
+    emoji: '🍃',
+    image: null,
+  },
+  {
+    id: 'PKO-GIFT',
+    name: 'Gift Bundle (2 × 500ml)',
+    size: '2 × 500ml',
+    desc: 'A beautiful gift set — two bottles of our signature cold-pressed palm kernel oil.',
+    price: 4500,
+    quantity: 12,
+    emoji: '🎁',
+    image: null,
+  }
+];
+let orders = [];
+const ADMIN_PASSWORD = 'ssb2025';
+
+// ── PRODUCTS RENDER ──
+function imgHtml(p, cls='') {
+  return p.image
+    ? `<img src="${p.image}" alt="${p.name}" class="${cls}" loading="lazy">`
+    : `<div class="prod-emoji-fallback">${p.emoji}</div>`;
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => {
+    const shareText = encodeURIComponent(`✨ ${p.name} (${p.size}) — ₦${p.price.toLocaleString()}\n\n${p.desc}\n\nShop here: ${location.href}#shop`);
+    const pageUrl = encodeURIComponent(location.href + '#shop');
+    return `
+    <div class="product-card">
+      <div class="product-img-wrap">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s">` : `<div class="prod-emoji-fallback">${p.emoji}</div>`}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.size} · ${p.desc}</div>
+        <div class="product-meta">
+          <div class="product-price">₦${p.price.toLocaleString()}</div>
+          <div class="product-stock ${p.quantity < 10 ? 'low' : ''}">${p.quantity > 0 ? (p.quantity < 10 ? `Only ${p.quantity} left!` : `In Stock`) : 'Out of Stock'}</div>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('${p.id}')" ${p.quantity === 0 ? 'disabled' : ''}>
+          ${p.quantity === 0 ? 'Out of Stock' : '+ Add to Cart'}
+        </button>
+        <div class="product-share">
+          <a class="product-share-btn share-wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener" title="Share on WhatsApp">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.103 1.51 5.833L0 24l6.335-1.611A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.213-3.76.957.998-3.648-.233-.374A9.78 9.78 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.419 0 9.818 4.398 9.818 9.818 0 5.419-4.399 9.818-9.818 9.818z"/></svg>
+            WA
+          </a>
+          <a class="product-share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}" target="_blank" rel="noopener" title="Share on Facebook">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            FB
+          </a>
+          <a class="product-share-btn share-tw" href="https://twitter.com/intent/tweet?text=${shareText}" target="_blank" rel="noopener" title="Share on X">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X
+          </a>
+          <button class="product-share-btn share-copy" onclick="copyProductLink('${p.name}', '${p.size}', ${p.price})" title="Copy link" style="background:#f0f0f0;color:#333">
+            🔗 Copy
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  if (products.length > 0) {
+    document.getElementById('heroPrice').textContent = `₦${products[0].price.toLocaleString()}`;
+  }
+}
+
+// ── CART ──
+function addToCart(pid) {
+  const p = products.find(x => x.id === pid);
+  if (!p || p.quantity === 0) return;
+  const existing = cart.find(x => x.id === pid);
+  if (existing) {
+    if (existing.qty >= p.quantity) { showToast('Max stock reached'); return; }
+    existing.qty++;
+  } else {
+    cart.push({ ...p, qty: 1 });
+  }
+  updateCartUI();
+  showToast(`${p.name} added to cart 🛒`);
+}
+
+function removeFromCart(pid) {
+  cart = cart.filter(x => x.id !== pid);
+  updateCartUI();
+}
+
+function changeQty(pid, delta) {
+  const item = cart.find(x => x.id === pid);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(pid);
+  else updateCartUI();
+}
+
+function cartTotal() {
+  return cart.reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  const itemsEl = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  if (cart.length === 0) {
+    itemsEl.innerHTML = `<div class="empty-cart"><span>🛒</span>Your cart is empty.</div>`;
+    footer.style.display = 'none';
+  } else {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        ${item.image
+          ? `<img src="${item.image}" alt="${item.name}" class="cart-item-img">`
+          : `<div class="cart-item-img-fallback">${item.emoji}</div>`}
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">₦${(item.price * item.qty).toLocaleString()}</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+          </div>
+        </div>
+        <button onclick="removeFromCart('${item.id}')" style="background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--text-muted)">🗑</button>
+      </div>
+    `).join('');
+    document.getElementById('cartTotalAmt').textContent = `₦${cartTotal().toLocaleString()}`;
+    footer.style.display = 'block';
+  }
+}
+
+function toggleCart() {
+  const overlay = document.getElementById('cartOverlay');
+  const drawer = document.getElementById('cartDrawer');
+  overlay.classList.toggle('open');
+  drawer.classList.toggle('open');
+  updateCartUI();
+}
+
+// ── CHECKOUT ──
+function openCheckout() {
+  toggleCart();
+  const summary = document.getElementById('orderSummaryBox');
+  summary.innerHTML = `
+    <div class="order-summary-title">Order Summary</div>
+    ${cart.map(i => `<div class="order-line"><span>${i.name} × ${i.qty}</span><span>₦${(i.price * i.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="order-line order-total"><span>Total</span><span>₦${cartTotal().toLocaleString()}</span></div>
+  `;
+  document.getElementById('checkoutForm').style.display = 'block';
+  document.getElementById('orderSuccess').style.display = 'none';
+  document.getElementById('checkoutModal').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+}
+
+async function submitOrder() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('emailAddr').value.trim();
+  const phone = document.getElementById('phoneNum').value.trim();
+  const address = document.getElementById('deliveryAddr').value.trim();
+  if (!firstName || !lastName || !email || !phone || !address) {
+    showToast('Please fill in all required fields'); return;
+  }
+  if (!/\S+@\S+\.\S+/.test(email)) { showToast('Please enter a valid email'); return; }
+
+  // Get visitor IP/location
+  let visitorIP = 'Unknown'; let visitorLocation = 'Unknown';
+  try {
+    const r = await fetch('https://api.ipify.org?format=json');
+    const d = await r.json();
+    visitorIP = d.ip;
+  } catch {}
+  try {
+    const r2 = await fetch(`https://ipapi.co/${visitorIP}/json/`);
+    const d2 = await r2.json();
+    visitorLocation = `${d2.city || ''}, ${d2.region || ''}, ${d2.country_name || ''}`.replace(/^,\s*|,\s*,/g, '');
+  } catch { visitorLocation = 'Nigeria (approximate)'; }
+
+  const orderId = 'SSB-' + Date.now().toString(36).toUpperCase();
+  const order = {
+    id: orderId,
+    date: new Date().toLocaleString(),
+    customer: { firstName, lastName, email, phone, address },
+    notes: document.getElementById('orderNotes').value.trim(),
+    items: JSON.parse(JSON.stringify(cart)),
+    total: cartTotal(),
+    visitorIP,
+    visitorLocation,
+    status: 'Received'
+  };
+  orders.unshift(order);
+
+  // Deduct stock
+  cart.forEach(ci => {
+    const p = products.find(x => x.id === ci.id);
+    if (p) p.quantity = Math.max(0, p.quantity - ci.qty);
+  });
+
+  cart = [];
+  updateCartUI();
+  renderProducts();
+
+  document.getElementById('checkoutForm').style.display = 'none';
+  document.getElementById('orderRefNum').textContent = orderId;
+  document.getElementById('orderSuccess').style.display = 'block';
+}
+
+// ── ADMIN ──
+function openAdminLogin() {
+  document.getElementById('adminPwd').value = '';
+  document.getElementById('loginErr').style.display = 'none';
+  document.getElementById('adminLoginModal').classList.add('open');
+}
+
+function checkAdminLogin() {
+  const pwd = document.getElementById('adminPwd').value;
+  if (pwd === ADMIN_PASSWORD) {
+    closeModal('adminLoginModal');
+    openAdminDashboard();
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+  }
+}
+
+function openAdminDashboard() {
+  renderAdminStats();
+  renderOrdersTable();
+  renderAdminProducts();
+  document.getElementById('adminModal').classList.add('open');
+}
+
+function renderAdminStats() {
+  const totalRev = orders.reduce((s, o) => s + o.total, 0);
+  const totalOrders = orders.length;
+  const totalStock = products.reduce((s, p) => s + p.quantity, 0);
+  document.getElementById('adminStats').innerHTML = `
+    <div class="stat-card"><div class="stat-val">₦${totalRev.toLocaleString()}</div><div class="stat-label">Total Revenue</div></div>
+    <div class="stat-card"><div class="stat-val">${totalOrders}</div><div class="stat-label">Total Orders</div></div>
+    <div class="stat-card"><div class="stat-val">${totalStock}</div><div class="stat-label">Items in Stock</div></div>
+    <div class="stat-card"><div class="stat-val">${products.length}</div><div class="stat-label">Products</div></div>
+  `;
+}
+
+function renderOrdersTable() {
+  const wrap = document.getElementById('ordersTableWrap');
+  if (orders.length === 0) {
+    wrap.innerHTML = '<p style="color:var(--text-muted);padding:2rem 0;text-align:center">No orders yet. Share your link to start selling! 🚀</p>';
+    return;
+  }
+  wrap.innerHTML = `
+    <div style="overflow-x:auto">
+    <table class="orders-table">
+      <thead><tr>
+        <th>Order ID</th><th>Date</th><th>Customer</th><th>Contact</th>
+        <th>Items</th><th>Total</th><th>Location / IP</th><th>Status</th>
+      </tr></thead>
+      <tbody>
+        ${orders.map(o => `
+          <tr>
+            <td><span class="order-id">${o.id}</span></td>
+            <td style="font-size:0.78rem;white-space:nowrap">${o.date}</td>
+            <td>
+              <strong>${o.customer.firstName} ${o.customer.lastName}</strong>
+              <br><span style="font-size:0.75rem;color:var(--text-muted)">${o.customer.address}</span>
+            </td>
+            <td style="font-size:0.78rem">${o.customer.email}<br>${o.customer.phone}</td>
+            <td style="font-size:0.78rem">${o.items.map(i => `${i.name} ×${i.qty}`).join('<br>')}</td>
+            <td style="font-weight:700;color:var(--brown)">₦${o.total.toLocaleString()}</td>
+            <td style="font-size:0.75rem">
+              <span style="color:var(--brown);font-weight:600">${o.visitorLocation}</span>
+              <br><span style="font-family:monospace;font-size:0.7rem;color:var(--text-muted)">${o.visitorIP}</span>
+            </td>
+            <td><span class="status-badge">${o.status}</span></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+    </div>
+  `;
+}
+
+function renderAdminProducts() {
+  document.getElementById('adminProductList').innerHTML = products.length === 0
+    ? '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">No products yet. Add one above!</p>'
+    : products.map((p) => `
+    <div class="product-admin-row" id="adminRow_${p.id}" style="grid-template-columns:auto 1fr auto;align-items:start">
+      <div>
+        ${p.image
+          ? `<img src="${p.image}" class="admin-prod-thumb" alt="${p.name}">`
+          : `<div class="admin-prod-thumb-fallback">${p.emoji}</div>`}
+      </div>
+      <div class="product-admin-fields">
+        <div class="product-admin-name">${p.name} — ${p.size}</div>
+        <div class="mini-inputs">
+          <input class="mini-input" type="number" id="adPrice_${p.id}" value="${p.price}" placeholder="Price (₦)">
+          <input class="mini-input" type="number" id="adQty_${p.id}" value="${p.quantity}" placeholder="Quantity">
+          <input class="mini-input" style="width:180px" type="text" id="adDesc_${p.id}" value="${p.desc}" placeholder="Description">
+        </div>
+        <!-- Image upload for this product -->
+        <div style="margin-top:0.6rem">
+          <div class="img-upload-zone" style="padding:0.7rem;max-width:300px" id="editImgZone_${p.id}">
+            <input type="file" accept="image/*" onchange="handleEditImage(event,'${p.id}')">
+            <div class="img-upload-placeholder" style="font-size:0.75rem">
+              <span style="font-size:1.2rem">📷</span>
+              ${p.image ? 'Replace image' : 'Upload image'}
+            </div>
+          </div>
+          ${p.image ? `<button type="button" class="img-remove-btn" onclick="removeProductImage('${p.id}')">✕ Remove image</button>` : ''}
+        </div>
+      </div>
+      <div class="admin-btn-group" style="align-self:start;padding-top:0.2rem">
+        <button class="edit-product-btn" onclick="saveProduct('${p.id}')">Save</button>
+        <button class="delete-product-btn" onclick="promptDelete('${p.id}')">🗑 Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── ADD NEW PRODUCT ──
+let newProdImageData = null;
+
+function previewNewImage(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    newProdImageData = ev.target.result;
+    document.getElementById('newImgPreview').src = newProdImageData;
+    document.getElementById('newImgPreviewWrap').style.display = 'block';
+    document.getElementById('newImgPlaceholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeNewImage(e) {
+  e.stopPropagation();
+  newProdImageData = null;
+  document.getElementById('newProdImgInput').value = '';
+  document.getElementById('newImgPreviewWrap').style.display = 'none';
+  document.getElementById('newImgPlaceholder').style.display = 'block';
+}
+
+function addNewProduct() {
+  const name  = document.getElementById('newProdName').value.trim();
+  const size  = document.getElementById('newProdSize').value.trim() || 'Standard';
+  const price = parseFloat(document.getElementById('newProdPrice').value);
+  const qty   = parseInt(document.getElementById('newProdQty').value);
+  const emoji = document.getElementById('newProdEmoji').value.trim() || '📦';
+  const desc  = document.getElementById('newProdDesc').value.trim();
+  if (!name || !desc || isNaN(price) || isNaN(qty)) {
+    showToast('Please fill in all required fields'); return;
+  }
+  const id = 'PROD-' + Date.now().toString(36).toUpperCase();
+  products.push({ id, name, size, desc, price, quantity: qty, emoji, image: newProdImageData });
+  // Clear form
+  ['newProdName','newProdSize','newProdPrice','newProdQty','newProdEmoji','newProdDesc'].forEach(f => document.getElementById(f).value = '');
+  removeNewImage({ stopPropagation: ()=>{} });
+  renderProducts();
+  renderAdminProducts();
+  renderAdminStats();
+  showToast(`${name} added ✓`);
+}
+
+// ── IMAGE HANDLERS FOR EDIT ──
+function handleEditImage(e, pid) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const p = products.find(x => x.id === pid);
+    if (p) {
+      p.image = ev.target.result;
+      renderProducts();
+      renderAdminProducts();
+      showToast('Image updated ✓');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeProductImage(pid) {
+  const p = products.find(x => x.id === pid);
+  if (p) {
+    p.image = null;
+    renderProducts();
+    renderAdminProducts();
+    showToast('Image removed');
+  }
+}
+
+// ── DELETE PRODUCT ──
+let deleteTargetId = null;
+function promptDelete(pid) {
+  const p = products.find(x => x.id === pid);
+  if (!p) return;
+  deleteTargetId = pid;
+  document.getElementById('deleteProductName').textContent = `"${p.name}"`;
+  document.getElementById('deleteConfirmModal').classList.add('open');
+}
+function confirmDelete() {
+  if (!deleteTargetId) return;
+  products = products.filter(x => x.id !== deleteTargetId);
+  cart = cart.filter(x => x.id !== deleteTargetId);
+  deleteTargetId = null;
+  closeModal('deleteConfirmModal');
+  renderProducts();
+  renderAdminProducts();
+  renderAdminStats();
+  updateCartUI();
+  showToast('Product deleted');
+}
+
+function saveProduct(pid) {
+  const p = products.find(x => x.id === pid);
+  if (!p) return;
+  const newPrice = parseFloat(document.getElementById(`adPrice_${pid}`).value);
+  const newQty = parseInt(document.getElementById(`adQty_${pid}`).value);
+  const newDesc = document.getElementById(`adDesc_${pid}`).value.trim();
+  if (isNaN(newPrice) || isNaN(newQty)) { showToast('Please enter valid numbers'); return; }
+  p.price = newPrice;
+  p.quantity = newQty;
+  if (newDesc) p.desc = newDesc;
+  renderProducts();
+  renderAdminStats();
+  showToast(`${p.name} updated ✓`);
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  if (tab === 'orders') renderOrdersTable();
+  if (tab === 'products') renderAdminProducts();
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ── SOCIAL SHARE ──
+function initShareBar() {
+  const url = encodeURIComponent(location.href);
+  const text = encodeURIComponent('✨ Shine Shine Baby Naturals — 100% natural cold-pressed palm kernel oil. Gentle for newborns, perfect for the whole family. No chemicals. No additives. Just pure care! 🌿\n\nShop now: ' + location.href);
+  document.getElementById('shareWa').href = `https://wa.me/?text=${text}`;
+  document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('shareTw').href = `https://twitter.com/intent/tweet?text=${text}`;
+  if (navigator.share) document.getElementById('shareNative').style.display = 'inline-flex';
+}
+
+function shareInstagram() {
+  navigator.clipboard.writeText(`✨ Shine Shine Baby Naturals\n100% natural cold-pressed palm kernel oil.\nGentle for newborns, perfect for the whole family. 🌿\n\nShop: ${location.href}\n\n#ShineShhineBaby #NaturalSkincare #PalmKernelOil #BabySkincare #MadeInNigeria #NaturalCare`)
+    .then(() => showToast('Caption copied! Paste it into Instagram ✓'))
+    .catch(() => showToast('Could not copy — please copy manually'));
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(location.href)
+    .then(() => showToast('Link copied to clipboard ✓'))
+    .catch(() => showToast('Copy failed — please copy the URL manually'));
+}
+
+function copyProductLink(name, size, price) {
+  const text = `${name} (${size}) — ₦${price.toLocaleString()}\nShop now: ${location.href}#shop`;
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('Product link copied ✓'))
+    .catch(() => showToast('Copy failed'));
+}
+
+function nativeShare() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Shine Shine Baby Naturals',
+      text: '100% natural cold-pressed palm kernel oil. Gentle for newborns, perfect for the whole family.',
+      url: location.href
+    });
+  }
+}
+
+// Delete confirm overlay close
+document.getElementById('deleteConfirmModal').addEventListener('click', function(e) {
+  if (e.target === this) { deleteTargetId = null; closeModal('deleteConfirmModal'); }
+});
+
+// Close modals on overlay click
+document.getElementById('checkoutModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCheckout();
+});
+document.getElementById('adminModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal('adminModal');
+});
+document.getElementById('adminLoginModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal('adminLoginModal');
+});
+
+// ── INIT ──
+renderProducts();
+updateCartUI();
+initShareBar();
+</script>
+</body>
+</html>
